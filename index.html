@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cluster Expander</title>
+  <meta name="description" content="Cluster Expander javascript helper for a ui effect of expanding a group of divs">
+
+  <style>
+    html, body, div {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: darkslategrey;
+    }
+    .cluster-expander-container {
+      position:absolute;
+      height: 100%;
+      width: 100%;
+    }
+    .cluster-expander-div {
+      background-color: #C0C;
+      height: 150px;
+      width: 150px;
+      position: absolute;
+      display:inline-block;
+      z-index: 100;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      visibility: hidden;
+    }
+    .cluster-expander-div-lg {
+      height: 300px;
+      width: 300px;
+    }
+    .cluster-expander-div-sm {
+      height: 100px;
+      width: 100px;
+    }
+    .cluster-expander-div-sm, .cluster-expander-div-md {
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cluster-expander-container">
+    <div class="cluster-expander-div cluster-expander-div-lg" style="background-image:url('https://source.unsplash.com/user/c_v_r/100x100?1');"></div>
+    <div class="cluster-expander-div cluster-expander-div-md" style="background-image:url('https://source.unsplash.com/user/c_v_r/100x100?2');"></div>
+    <div class="cluster-expander-div cluster-expander-div-md" style="background-image:url('https://source.unsplash.com/user/c_v_r/100x100?3');"></div>
+    <div class="cluster-expander-div cluster-expander-div-sm" style="background-image:url('https://source.unsplash.com/user/c_v_r/100x100?4');"></div>
+    <div class="cluster-expander-div cluster-expander-div-sm" style="background-image:url('https://source.unsplash.com/user/c_v_r/100x100?5');"></div>
+    <div class="cluster-expander-div cluster-expander-div-sm" style="background-image:url('https://source.unsplash.com/user/c_v_r/100x100?6');"></div>
+    <div class="cluster-expander-div cluster-expander-div-sm" style="background-image:url('https://source.unsplash.com/user/c_v_r/100x100?7');"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  <script src="clusterExpander.js"></script>
+
+  <script>
+    $(function() {
+      clusterExpander.init($(".cluster-expander-div").toArray());
+
+      setTimeout(function(){
+        $('.cluster-expander-div-lg')[0].style.visibility = 'visible';
+      }, 800);
+
+      setTimeout(clusterExpander.expand, 2000);
+    });
+  </script>
+</body>
+</html>
